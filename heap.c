@@ -30,3 +30,17 @@ heap_t *heap_crear(cmp_func_t cmp){
 
   return heap;
 }
+
+size_t heap_cantidad(const heap_t *heap){
+  return heap->cant;
+}
+
+void *heap_ver_max(const heap_t *heap){
+  if ( heap->cant == 0 ) return NULL;
+
+  return vector_obtener(heap->vector, 0) // el maximo se encuentra en la posicion maxima del vector
+}
+
+bool heap_esta_vacio(const heap_t *heap){
+  return heap->cant == 0;
+}
