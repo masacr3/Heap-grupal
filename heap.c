@@ -53,6 +53,19 @@ bool heap_esta_vacio(const heap_t *heap){
 }
 
 
+void uphead(void** arreglo, size_t pos, cmp_func_t cmp cmp){
+  if ( pos == 0 ) return;
+
+  //calculo padre
+  size_t padre = ( pos - 1 ) / 2;
+
+  if ( cmp ( arreglo[pos], arreglo[padre] ) < 0 ) return ;
+
+  swap( arreglo[pos], arreglo[padre] );
+  uphead ( arreglo , padre , cmp ) ;
+}
+
+
 
 bool heap_encolar(heap_t *heap, void *elem){
 	if (!elem) return false;
@@ -64,7 +77,7 @@ bool heap_encolar(heap_t *heap, void *elem){
   heap->array[ heap->cantidad ] = elem;
   heap->cantidad++;
 
-  upheap(heap);
+  upheap(heap->arreglo, heap->cantidad, heap->cmp );
 	return true;
 }
 
