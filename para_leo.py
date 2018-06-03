@@ -3,5 +3,5 @@ def upheap(arreglo,posicion,cmp):
         return
     if cmp(arreglo[posicion],arreglo[padre]) < 0:
         return
-    swap(arreglo[posicion],arreglo[posicion-padre])
-    upheap(arreglo,posicion-padre,cmp)
+    swap(arreglo[posicion],arreglo[padre])
+    upheap(arreglo,padre,cmp)
