@@ -66,7 +66,7 @@ void uphead(void** arreglo, size_t pos, cmp_func_t cmp cmp){
 
   if ( cmp ( arreglo[pos], arreglo[padre] ) < 0 ) return ;
 
-  swap( arreglo[pos], arreglo[padre] );
+  swap( &arreglo[pos], &arreglo[padre] );
   uphead ( arreglo , padre , cmp ) ;
 }
 
@@ -104,13 +104,13 @@ void downheap(void** array, size_t cantidad, size_t pibote ){
     size_t maximo_hijo = obtener_max( hijo_izquierdo,hijo_derecho);
 
     //cambio posiciones
-    swap(array[pibote],array[maximo_hijo]);
+    swap(&array[pibote], &array[maximo_hijo]);
 
     downheap(array,cantidad,maximo_hijo);
   }
 
   //si cai aca es por que solo existe el hijo derecho
-  swap(array[pibote],array[pos_hijo_izquierdo]);
+  swap(&array[pibote], &array[pos_hijo_izquierdo]);
 
   downheap(array,cantidad,pos_hijo_izquierdo);
 }
