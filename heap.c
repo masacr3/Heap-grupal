@@ -1,16 +1,3 @@
-/*
-  Hola marto, te comento que hay que organizar mas el codigo
-  en el header tendriamos q poner la deficion de los prototipos
-  auxiliares.
-
-  te comento q las funciones faltan optimizarlas. como el tema de redimensionar
-  el factor de carga, no lo tengo .. solo tengo lo q me diste de teoria
-
-  cabe destacar q no vamos a usar vector_dinamico.h pero vamos a tomar bastantes ideas de maximo_hijo
-  Bueno Exitos para fisica :P
-*/
-
-
 #include "heap.h"
 #include <string.h>
 
@@ -33,6 +20,9 @@ void* obtener(void** array,size_t n, size_t*pos);
 //pre: valor1 y valor 2 son posiciones validas
 size_t obtener_max(void** array, size_t valor1, size_t valor2);
 
+//swap tp0
+void swap ( void* x , void* y);
+
 
 
 
@@ -41,7 +31,7 @@ heap_t *heap_crear(cmp_func_t cmp){
 
   if(!heap) return NULL;
 
-  void** vector = vector_crear(TAMANIO_INICIAL);
+  void** vector = (void** ) malloc( sizeof(void*) * TAMANIO_INICIAL );
 
   if(!vector){
     free(heap);
@@ -60,9 +50,7 @@ size_t heap_cantidad(const heap_t *heap){
 }
 
 void *heap_ver_max(const heap_t *heap){
-  if ( heap->cantidad == 0 ) return NULL;
-
-  return vector_obtener(heap->vector, 0) // el maximo se encuentra en la posicion maxima del vector
+  return heap->cantidad == 0 ? NULL : heap->array[0]; // el maximo se encuentra en la posicion maxima del vector
 }
 
 bool heap_esta_vacio(const heap_t *heap){
@@ -135,6 +123,12 @@ void* obtener(void** array, size_t n, size_t pos){
 
 size_t obtener_max(void** array, size_t p, size_t p2){
   return cmp (array[p] < array[p2]) ? p : p2;
+}
+
+void swap ( void* x , void* y){
+  void* aux = *x;
+  *x = *y;
+  *y = *aux;
 }
 
 /*
