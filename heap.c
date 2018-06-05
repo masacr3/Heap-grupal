@@ -27,7 +27,7 @@ struct heap {
 /* prototipos funciones auxiliares */
 
 //retorna NULL en caso que este fuera de rango
-void* obtener(void** array, size_t*pos);
+void* obtener(void** array,size_t n, size_t*pos);
 
 //retorna la posicion max
 //pre: valor1 y valor 2 son posiciones validas
