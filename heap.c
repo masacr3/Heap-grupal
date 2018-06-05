@@ -31,7 +31,7 @@ void* obtener(void** array,size_t n, size_t*pos);
 
 //retorna la posicion max
 //pre: valor1 y valor 2 son posiciones validas
-size_t* obtener_max(void** array, size_t valor1, size_t valor2);
+size_t obtener_max(void** array, size_t valor1, size_t valor2);
 
 
 
