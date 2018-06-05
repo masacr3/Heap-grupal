@@ -127,8 +127,18 @@ void downheap(void** array, size_t cantidad, size_t pibote ){
   downheap(array,cantidad,pos_hijo_izquierdo);
 }
 
+// deficion de las funciones auxiliares
+
+void* obtener(void** array, size_t n, size_t pos){
+  return pos >= n ? NULL : array[pos];
+}
+
+size_t obtener_max(void** array, size_t p, size_t p2){
+  return cmp (array[p] < array[p2]) ? p : p2;
+}
+
 /*
-        MACHETE :P 
+        MACHETE :P
         padre = (pos - 1) / 2
         ultipadre = (len - 1 / 2);
 
